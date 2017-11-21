@@ -8368,8 +8368,6 @@ footer {
   border-bottom: 1px solid #eee;
 }
 
-/* Sidebar navigation */
-
 .nav-sidebar {
   margin-right: -21px;
   /* 20px padding + 1px border */
@@ -8382,9 +8380,9 @@ footer {
   padding-left: 20px;
 }
 
-.nav-sidebar > .active > a,
-.nav-sidebar > .active > a:hover,
-.nav-sidebar > .active > a:focus {
+.nav-sidebar > li > a.router-link-active,
+.nav-sidebar > li > a:hover,
+.nav-sidebar > li > a:focus {
   color: #fff;
   background-color: #428bca;
 }

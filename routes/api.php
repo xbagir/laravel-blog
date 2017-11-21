@@ -19,4 +19,6 @@ Route::group([
 ], function () {
     Route::resource('articles', 'ArticleController');
     Route::resource('categories', 'CategoryController');
+    Route::resource('users', 'UserController');
+    Route::resource('comments', 'CommentController');
 });

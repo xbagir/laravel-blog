@@ -2,13 +2,21 @@
 
 namespace App;
 
+use App\Traits\EloquentCreateAtTrait;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable;
+    use HasApiTokens, Notifiable, EloquentCreateAtTrait;
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['created_at', 'deleted_at'];
 
     /**
      * The attributes that are mass assignable.

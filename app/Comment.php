@@ -2,12 +2,13 @@
 
 namespace App;
 
+use App\Traits\EloquentCreateAtTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Comment extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, EloquentCreateAtTrait;
 
     /**
      * The attributes that are mass assignable.

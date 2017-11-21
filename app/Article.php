@@ -2,12 +2,13 @@
 
 namespace App;
 
+use App\Traits\EloquentCreateAtTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Article extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, EloquentCreateAtTrait;
 
     /**
      * The attributes that should be mutated to dates.
@@ -70,17 +71,6 @@ class Article extends Model
     {
         return $this->morphMany(Comment::class, 'commentable')
                     ->orderBy('id', 'desc');
-    }
-
-    /**
-     * Get the created at attribute.
-     *
-     * @param $value
-     * @return string
-     */
-    public function getCreatedAtAttribute($value)
-    {
-        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value)->diffForHumans();
     }
 
 }
