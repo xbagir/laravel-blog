@@ -56,4 +56,4 @@ password: 123123
 
 ## Contributors
 
-- [Bagirov Maxim](http://github.com/xbagir)
+- [Bagirov Maxim (xbagir@gmail.com)](http://github.com/xbagir)
