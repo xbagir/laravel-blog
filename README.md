@@ -47,6 +47,12 @@ npm run production
 ```shell
 php artisan migrate
 ```
+### 3. Аdmin credentials.
+
+```shell
+login:    admin@admin.local
+password: 123123
+```
 
 ## Contributors
 
