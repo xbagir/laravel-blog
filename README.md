@@ -45,7 +45,7 @@ npm run production
 ### 4. Running Migrations.
 
 ```shell
-php artisan migrate  —seed
+php artisan migrate --seed
 ```
 ### 5. Аdmin credentials.
 

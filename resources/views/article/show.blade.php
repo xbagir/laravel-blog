@@ -56,7 +56,7 @@
                 <div class="media-body">
                     <h4 class="media-heading">
                         {{$comment->user->name}}
-                        <small>{{$comment->created_at->toFormattedDateString()}}</small>
+                        <small>{{$comment->created_at}}</small>
                      </h4>
                     {{$comment->content}}.
                 </div>
