@@ -18,7 +18,7 @@
                         <h4 class="media-heading">
                             <small>
                                 <strong>{{$comment->user->name}}</strong>
-                                 - {{$comment->created_at->diffForHumans()}}
+                                 - {{$comment->created_at}}
                             </small>
                         </h4>
                         {{$comment->content}}
