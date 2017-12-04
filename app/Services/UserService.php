@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class UserService
 {
-    /** @var UserRepository  */
+    /** @var UserRepository */
     protected $userRepository;
 
     /**
@@ -31,7 +31,7 @@ class UserService
      *
      * @return Collection|static[]
      */
-    public function getAll() : Collection
+    public function getAll(): Collection
     {
         return $this->userRepository->getAll();
     }

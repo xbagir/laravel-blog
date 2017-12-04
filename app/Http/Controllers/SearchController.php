@@ -18,10 +18,13 @@ class SearchController extends ArticleBaseController
         $title    = $request->get('q');
         $articles = $this->articleService->searchByTitle($title);
 
-        return view('search.show', [
-            'articles' =>  $articles,
-            'q'        =>  $title
-        ]);
+        return view(
+            'search.show',
+            [
+                'articles' => $articles,
+                'q'        => $title,
+            ]
+        );
     }
 
 

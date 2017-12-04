@@ -13,7 +13,7 @@ class DiscussionController extends Controller
 
     public function __construct(DiscussionService $discussionService)
     {
-        $this->discussionService  = $discussionService;
+        $this->discussionService = $discussionService;
     }
 
     /**
@@ -31,14 +31,17 @@ class DiscussionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(int $id)
     {
         $discussion = $this->discussionService->getById($id);
 
-        if ( ! $discussion) abort(404);
+        if ( ! $discussion) {
+            abort(404);
+        }
 
         return view('discussion.show', compact('discussion'));
     }

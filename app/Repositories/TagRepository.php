@@ -13,7 +13,7 @@ class TagRepository implements TagRepositoryContract
      *
      * @return Collection|static[]
      */
-    public function getAll() : Collection
+    public function getAll(): Collection
     {
         return Tag::all();
     }
@@ -25,7 +25,7 @@ class TagRepository implements TagRepositoryContract
      *
      * @return Tag|null
      */
-    public function getByName(string $name) : Tag
+    public function getByName(string $name): Tag
     {
         return Tag::where('name', $name)->first();
     }

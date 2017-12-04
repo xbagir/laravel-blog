@@ -14,7 +14,7 @@ use App\Contracts\TagRepositoryContract as TagRepository;
 
 class TagService
 {
-    /** @var TagRepository  */
+    /** @var TagRepository */
     protected $tagRepository;
 
     public function __construct(TagRepository $tagRepository)
@@ -27,7 +27,7 @@ class TagService
      *
      * @return Collection|static[]
      */
-    public function getAll() : Collection
+    public function getAll(): Collection
     {
         return $this->tagRepository->getAll();
     }
@@ -39,7 +39,7 @@ class TagService
      *
      * @return Tag|null
      */
-    public function getByName($name) : Tag
+    public function getByName($name): Tag
     {
         return $this->tagRepository->getByName($name);
     }

@@ -14,14 +14,14 @@ interface CategoryRepositoryContract
      *
      * @return Category|null
      */
-    public function getById(int $id) : ?Category;
+    public function getById(int $id): ?Category;
 
     /**
      * Get all categories from database.
      *
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function getAll() : Collection;
+    public function getAll(): Collection;
 
     /**
      * Get the category model by slug.
@@ -30,5 +30,5 @@ interface CategoryRepositoryContract
      *
      * @return Category|null
      */
-    function getBySlug(string $slug) : ?Category;
+    function getBySlug(string $slug): ?Category;
 }

@@ -21,7 +21,7 @@ class ArticleRepository implements ArticleRepositoryContract
      *
      * @return Article|null
      */
-    public function getById(int $id) : ?Article
+    public function getById(int $id): ?Article
     {
         return Article::find($id);
     }
@@ -31,7 +31,7 @@ class ArticleRepository implements ArticleRepositoryContract
      *
      * @return Collection|static[]
      */
-    public function getAll() : Collection
+    public function getAll(): Collection
     {
         return Article::all();
     }
@@ -39,10 +39,11 @@ class ArticleRepository implements ArticleRepositoryContract
     /**
      * Paginate the given query into a simple paginator.
      *
-     * @param  int  $perPage
+     * @param  int $perPage
+     *
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function paginate(int $perPage) : \Illuminate\Contracts\Pagination\LengthAwarePaginator
+    public function paginate(int $perPage): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         return Article::paginate($perPage);
     }
@@ -50,10 +51,11 @@ class ArticleRepository implements ArticleRepositoryContract
     /**
      * Get the article model by slug.
      *
-     * @param  int  $perPage
-     * @return Article | null
+     * @param string $slug
+     *
+     * @return Article|null
      */
-    public function getFirstBySlug(string $slug) : ?Article
+    public function getFirstBySlug(string $slug): ?Article
     {
         return Article::where('slug', $slug)->first();
     }
@@ -65,11 +67,11 @@ class ArticleRepository implements ArticleRepositoryContract
      *
      * @return Collection
      */
-    public function searchByTitle(string $title) : Collection
+    public function searchByTitle(string $title): Collection
     {
         return Article::where('title', 'like', "%{$title}%")
-                ->orderBy('created_at', 'desc')
-                ->get();
+            ->orderBy('created_at', 'desc')
+            ->get();
     }
 
     /**
@@ -79,7 +81,7 @@ class ArticleRepository implements ArticleRepositoryContract
      *
      * @return bool
      */
-    public function existsById(int $id) : bool
+    public function existsById(int $id): bool
     {
         return Article::find($id) !== null;
     }
@@ -90,32 +92,37 @@ class ArticleRepository implements ArticleRepositoryContract
      * @param StoreArticleDto $dto
      *
      * @return bool
+     * @throws \Exception
+     * @throws \Throwable
      */
     public function store(StoreArticleDto $dto): bool
     {
-        DB::transaction(function () use ($dto) {
+        DB::transaction(
+            function () use ($dto) {
 
-            $tagIds = [];
+                $tagIds = [];
 
-            foreach($dto->getTags() as $name)
-            {
-                $tag = Tag::firstOrCreate(['name' => $name]);
+                foreach ($dto->getTags() as $name) {
+                    $tag = Tag::firstOrCreate(['name' => $name]);
 
-                $tagIds[] = $tag->id;
+                    $tagIds[] = $tag->id;
+                }
+
+                $article = Article::create(
+                    [
+                        'category_id' => $dto->getCategoryId(),
+                        'user_id'     => $dto->getUserId(),
+                        'slug'        => $dto->getSlug(),
+                        'title'       => $dto->getTitle(),
+                        'subtitle'    => $dto->getSubtitle(),
+                        'content'     => $dto->getContent(),
+                        'image'       => $dto->getImage(),
+                    ]
+                );
+
+                $article->tags()->sync($tagIds);
             }
-
-            $article = Article::create([
-                'category_id' => $dto->getCategoryId(),
-                'user_id'     => $dto->getUserId(),
-                'slug'        => $dto->getSlug(),
-                'title'       => $dto->getTitle(),
-                'subtitle'    => $dto->getSubtitle(),
-                'content'     => $dto->getContent(),
-                'image'       => $dto->getImage(),
-            ]);
-
-            $article->tags()->sync($tagIds);
-        });
+        );
 
         return true;
     }
@@ -123,23 +130,29 @@ class ArticleRepository implements ArticleRepositoryContract
     /**
      * Add comment to article.
      *
-     * @return StoreArticleCommentDto $dto
+     * @param StoreArticleCommentDto $dto
      *
-     * @throws \Exception|\Throwable
+     * @return bool
+     * @throws \Exception
+     * @throws \Throwable
      */
-    public function storeComment(StoreArticleCommentDto $dto) : bool
+    public function storeComment(StoreArticleCommentDto $dto): bool
     {
-        DB::transaction(function () use ($dto) {
+        DB::transaction(
+            function () use ($dto) {
 
-            $article = Article::find($dto->getArticleId());
+                $article = Article::find($dto->getArticleId());
 
-            $comment = new Comment([
-                'user_id' => $dto->getUserId(),
-                'content' => $dto->getContent()
-            ]);
+                $comment = new Comment(
+                    [
+                        'user_id' => $dto->getUserId(),
+                        'content' => $dto->getContent(),
+                    ]
+                );
 
-            $article->comments()->save($comment);
-        });
+                $article->comments()->save($comment);
+            }
+        );
 
         return true;
     }
@@ -147,10 +160,11 @@ class ArticleRepository implements ArticleRepositoryContract
     /**
      * Delete article
      *
-     * @param  int  $id
+     * @param  int $id
+     *
      * @return bool
      */
-    public function delete(int $id) : bool
+    public function delete(int $id): bool
     {
         return Article::destroy($id) != 0;
     }

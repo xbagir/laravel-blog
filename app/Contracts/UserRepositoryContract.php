@@ -11,5 +11,5 @@ interface UserRepositoryContract
      *
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function getAll() : Collection;
+    public function getAll(): Collection;
 }

@@ -15,7 +15,7 @@ abstract class ArticleBaseController extends Controller
     /** @var CategoryService */
     protected $categoryService;
 
-    /** @var TagService  */
+    /** @var TagService */
     protected $tagService;
 
     /**
@@ -25,8 +25,11 @@ abstract class ArticleBaseController extends Controller
      * @param CategoryService $categoryService
      * @param TagService      $tagService
      */
-    public function __construct(ArticleService $articleService, CategoryService $categoryService, TagService $tagService)
-    {
+    public function __construct(
+        ArticleService $articleService,
+        CategoryService $categoryService,
+        TagService $tagService
+    ) {
         $this->articleService  = $articleService;
         $this->categoryService = $categoryService;
         $this->tagService      = $tagService;

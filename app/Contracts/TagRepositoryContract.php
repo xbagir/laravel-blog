@@ -12,7 +12,7 @@ interface TagRepositoryContract
      *
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function getAll() : Collection;
+    public function getAll(): Collection;
 
     /**
      * Get Tag by name
@@ -21,5 +21,5 @@ interface TagRepositoryContract
      *
      * @return Tag|null
      */
-    public function getByName(string $name) : Tag;
+    public function getByName(string $name): Tag;
 }

@@ -14,7 +14,7 @@ class UserRepository implements UserRepositoryContract
      *
      * @return Collection|static[]
      */
-    public function getAll() : Collection
+    public function getAll(): Collection
     {
         return User::all();
     }

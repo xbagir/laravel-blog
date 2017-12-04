@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class CommentService
 {
-    /** @var CommentRepository  */
+    /** @var CommentRepository */
     protected $commentRepository;
 
     /**
@@ -31,7 +31,7 @@ class CommentService
      *
      * @return Collection|static[]
      */
-    public function getAll() : Collection
+    public function getAll(): Collection
     {
         return $this->commentRepository->getAll();
     }

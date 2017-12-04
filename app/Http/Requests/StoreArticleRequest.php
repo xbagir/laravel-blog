@@ -25,12 +25,12 @@ class StoreArticleRequest extends FormRequest
     public function rules()
     {
         return [
-            'categoryId'  => 'required|exists:categories,id',
-            'title'       => 'required|string',
-            'subtitle'    => 'required|string',
-            'content'     => 'required|string',
-            'tags'        => 'required|string',
-            'image'       => 'string|url'
+            'categoryId' => 'required|exists:categories,id',
+            'title'      => 'required|string',
+            'subtitle'   => 'required|string',
+            'content'    => 'required|string',
+            'tags'       => 'required|string',
+            'image'      => 'string|url',
         ];
     }
 }

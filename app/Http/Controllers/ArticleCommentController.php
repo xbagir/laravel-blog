@@ -10,10 +10,11 @@ class ArticleCommentController extends Controller
 {
     /**
      * @param StoreArticleCommentRequest $request
-     *
      * @param ArticleService             $articleService
      *
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     * @throws \Throwable
      */
     public function store(StoreArticleCommentRequest $request, ArticleService $articleService)
     {

@@ -16,7 +16,7 @@ class CategoryRepository implements CategoryRepositoryContract
      *
      * @return Category|null
      */
-    public function getById(int $id) : ?Category
+    public function getById(int $id): ?Category
     {
         return Category::find($id);
     }
@@ -26,7 +26,7 @@ class CategoryRepository implements CategoryRepositoryContract
      *
      * @return Collection|static[]
      */
-    public function getAll()  : Collection
+    public function getAll(): Collection
     {
         return Category::all();
     }
@@ -38,7 +38,7 @@ class CategoryRepository implements CategoryRepositoryContract
      *
      * @return Category|null
      */
-    public function getBySlug(string $slug) : ?Category
+    public function getBySlug(string $slug): ?Category
     {
         return Category::where('slug', $slug)->first();
     }

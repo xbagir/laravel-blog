@@ -16,7 +16,7 @@ use App\Contracts\DiscussionRepositoryContract as DiscussionRepository;
 
 class DiscussionService
 {
-    /** @var DiscussionRepository  */
+    /** @var DiscussionRepository */
     protected $discussionRepository;
 
     public function __construct(DiscussionRepository $discussionRepository)
@@ -29,7 +29,7 @@ class DiscussionService
      *
      * @return Collection|static[]
      */
-    public function getAll() : Collection
+    public function getAll(): Collection
     {
         return $this->discussionRepository->getAll();
     }
@@ -37,11 +37,11 @@ class DiscussionService
     /**
      * Get the discussion model by id.
      *
-     * @param int $perPage
+     * @param int $id
      *
      * @return Discussion|null
      */
-    public function getById(int $id) : ?Discussion
+    public function getById(int $id): ?Discussion
     {
         return $this->discussionRepository->getById($id);
     }
@@ -53,7 +53,7 @@ class DiscussionService
      *
      * @return LengthAwarePaginator
      */
-    public function paginate(int $perPage) : LengthAwarePaginator
+    public function paginate(int $perPage): LengthAwarePaginator
     {
         return $this->discussionRepository->paginate($perPage);
     }
@@ -65,7 +65,7 @@ class DiscussionService
      *
      * @return bool
      */
-    public function existsById(int $id) : bool
+    public function existsById(int $id): bool
     {
         return $this->discussionRepository->existsById($id);
     }
@@ -79,7 +79,7 @@ class DiscussionService
      *
      * @throws \Exception|\Throwable
      */
-    public function storeComment(StoreDiscussionCommentDto $dto) : bool
+    public function storeComment(StoreDiscussionCommentDto $dto): bool
     {
         return $this->discussionRepository->storeComment($dto);
     }

@@ -42,6 +42,3 @@ Route::group(['prefix' => 'admin/dashboard', 'middleware' => ['auth']], function
         ->where('path', '[\/\w\.-]*')
         ->name('admin.dashboard');
 });
-
-//Route::get('/test', 'HomeController@index');
-

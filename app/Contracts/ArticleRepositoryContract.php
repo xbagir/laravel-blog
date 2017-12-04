@@ -18,23 +18,23 @@ interface ArticleRepositoryContract
      *
      * @return Article|null
      */
-    public function getById(int $id) : ?Article;
+    public function getById(int $id): ?Article;
 
     /**
      * Get all articles from database.
      *
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function getAll() : Collection;
+    public function getAll(): Collection;
 
     /**
      * Paginate the given query into a simple paginator.
      *
-     * @param  int  $perPage
+     * @param  int $perPage
      *
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function paginate(int $perPage) : \Illuminate\Contracts\Pagination\LengthAwarePaginator;
+    public function paginate(int $perPage): \Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
     /**
      * Get the article model by slug.
@@ -43,7 +43,7 @@ interface ArticleRepositoryContract
      *
      * @return Article|null
      */
-    function getFirstBySlug(string $slug) : ?Article;
+    function getFirstBySlug(string $slug): ?Article;
 
     /**
      * Search all articles by title
@@ -52,7 +52,7 @@ interface ArticleRepositoryContract
      *
      * @return Collection
      */
-    function searchByTitle(string $title) : Collection;
+    function searchByTitle(string $title): Collection;
 
     /**
      * Check if article exists
@@ -61,7 +61,7 @@ interface ArticleRepositoryContract
      *
      * @return bool
      */
-    public function existsById(int $id) : bool;
+    public function existsById(int $id): bool;
 
     /**
      * Store article
@@ -81,14 +81,14 @@ interface ArticleRepositoryContract
      *
      * @throws \Exception|\Throwable
      */
-    public function storeComment(StoreArticleCommentDto $dto) : bool;
+    public function storeComment(StoreArticleCommentDto $dto): bool;
 
     /**
      * Delete article
      *
-     * @param  int  $id
+     * @param  int $id
      *
      * @return bool
      */
-    public function delete(int $id) : bool;
+    public function delete(int $id): bool;
 }

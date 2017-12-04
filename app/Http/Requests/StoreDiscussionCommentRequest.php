@@ -16,8 +16,7 @@ class StoreDiscussionCommentRequest extends FormRequest
     {
         $id = $this->post('discussionId');
 
-        if ($id)
-        {
+        if ($id) {
             return $discussionService->existsById($id);
         }
 
@@ -32,7 +31,7 @@ class StoreDiscussionCommentRequest extends FormRequest
     public function rules()
     {
         return [
-            'content' => 'required|min:3'
+            'content' => 'required|min:3',
         ];
     }
 }

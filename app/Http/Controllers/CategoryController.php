@@ -13,11 +13,16 @@ class CategoryController extends ArticleBaseController
     {
         $category = $this->categoryService->getById($id);
 
-        if ( ! $category) abort(404);
+        if ( ! $category) {
+            abort(404);
+        }
 
-        return view('category.show', [
-            'articles' => $category->articles,
-            'category' => $category
-        ]);
+        return view(
+            'category.show',
+            [
+                'articles' => $category->articles,
+                'category' => $category,
+            ]
+        );
     }
 }

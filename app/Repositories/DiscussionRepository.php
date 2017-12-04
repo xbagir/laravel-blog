@@ -17,7 +17,7 @@ class DiscussionRepository implements DiscussionRepositoryContract
      *
      * @return Collection|static[]
      */
-    public function getAll() : Collection
+    public function getAll(): Collection
     {
         return Discussion::all();
     }
@@ -29,7 +29,7 @@ class DiscussionRepository implements DiscussionRepositoryContract
      *
      * @return Discussion|null
      */
-    public function getById(int $id) : ?Discussion
+    public function getById(int $id): ?Discussion
     {
         return Discussion::find($id);
     }
@@ -37,11 +37,11 @@ class DiscussionRepository implements DiscussionRepositoryContract
     /**
      * Paginate the given query into a simple paginator.
      *
-     * @param  int  $perPage
+     * @param  int $perPage
      *
      * @return LengthAwarePaginator
      */
-    public function paginate(int $perPage) : LengthAwarePaginator
+    public function paginate(int $perPage): LengthAwarePaginator
     {
         return Discussion::paginate($perPage);
     }
@@ -53,7 +53,7 @@ class DiscussionRepository implements DiscussionRepositoryContract
      *
      * @return bool
      */
-    public function existsById(int $id) : bool
+    public function existsById(int $id): bool
     {
         return Discussion::where('id', $id)->exists();
     }
@@ -67,20 +67,24 @@ class DiscussionRepository implements DiscussionRepositoryContract
      *
      * @throws \Exception|\Throwable
      */
-    public function storeComment(StoreDiscussionCommentDto $dto) : bool
+    public function storeComment(StoreDiscussionCommentDto $dto): bool
     {
-        DB::transaction(function () use ($dto) {
+        DB::transaction(
+            function () use ($dto) {
 
-            $comment = new Comment([
-                'user_id' => $dto->getUserId(),
-                'content' => $dto->getContent()
-            ]);
+                $comment = new Comment(
+                    [
+                        'user_id' => $dto->getUserId(),
+                        'content' => $dto->getContent(),
+                    ]
+                );
 
-            $discussion = Discussion::find($dto->getDiscussionId());
+                $discussion = Discussion::find($dto->getDiscussionId());
 
-            $discussion->comments()->save($comment);
+                $discussion->comments()->save($comment);
 
-        });
+            }
+        );
 
         return true;
     }

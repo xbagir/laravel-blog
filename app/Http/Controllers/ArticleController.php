@@ -23,7 +23,9 @@ class ArticleController extends ArticleBaseController
     {
         $article = $this->articleService->getById($id);
 
-        if ( ! $article) abort(404);
+        if ( ! $article) {
+            abort(404);
+        }
 
         return view('article.show', compact('article'));
     }

@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ArticleService
 {
-    /** @var ArticleRepository  */
+    /** @var ArticleRepository */
     protected $articleRepository;
 
     public function __construct(ArticleRepository $articleRepository)
@@ -27,7 +27,7 @@ class ArticleService
      *
      * @return Article|null
      */
-    public function getById(int $id) : ?Article
+    public function getById(int $id): ?Article
     {
         return $this->articleRepository->getById($id);
     }
@@ -99,18 +99,15 @@ class ArticleService
      *
      * @return bool
      */
-    public function store(StoreArticleDto $dto) :bool
+    public function store(StoreArticleDto $dto): bool
     {
-        try
-        {
+        try {
             return $this->articleRepository->store($dto);
-        }
-        catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
 
         }
 
-        return  false;
+        return false;
     }
 
     /**
@@ -123,22 +120,20 @@ class ArticleService
      */
     public function storeComment(StoreArticleCommentDto $dto): bool
     {
-        try
-        {
+        try {
             return $this->articleRepository->storeComment($dto);
-        }
-        catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
 
         }
 
-        return  false;
+        return false;
     }
 
     /**
      * Delete article
      *
-     * @param  int  $id
+     * @param  int $id
+     *
      * @return bool
      */
     public function delete(int $id): bool

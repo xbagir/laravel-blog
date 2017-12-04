@@ -14,7 +14,7 @@ interface DiscussionRepositoryContract
      *
      * @return Collection|static[]
      */
-    public function getAll() : Collection;
+    public function getAll(): Collection;
 
     /**
      * Get the discussion model by id.
@@ -23,7 +23,7 @@ interface DiscussionRepositoryContract
      *
      * @return Discussion|null
      */
-    public function getById(int $id) : ?Discussion;
+    public function getById(int $id): ?Discussion;
 
     /**
      * Paginate the given query into a simple paginator.
@@ -32,7 +32,7 @@ interface DiscussionRepositoryContract
      *
      * @return LengthAwarePaginator
      */
-    public function paginate(int $perPage) : LengthAwarePaginator;
+    public function paginate(int $perPage): LengthAwarePaginator;
 
     /**
      * Check if discussion exists
@@ -41,7 +41,7 @@ interface DiscussionRepositoryContract
      *
      * @return bool
      */
-    public function existsById(int $id) : bool;
+    public function existsById(int $id): bool;
 
     /**
      * Add comment to discussion.
@@ -52,5 +52,5 @@ interface DiscussionRepositoryContract
      *
      * @throws \Exception|\Throwable
      */
-    public function storeComment(StoreDiscussionCommentDto $dto) : bool;
+    public function storeComment(StoreDiscussionCommentDto $dto): bool;
 }

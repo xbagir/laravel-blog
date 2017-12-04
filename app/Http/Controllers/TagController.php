@@ -15,12 +15,17 @@ class TagController extends ArticleBaseController
     {
         $tag = $this->tagService->getByName($name);
 
-        if ( ! $tag) abort(404);
+        if ( ! $tag) {
+            abort(404);
+        }
 
-        return view('tag.show', [
-            'articles' => $tag->articles,
-            'tag'      => $tag
-        ]);
+        return view(
+            'tag.show',
+            [
+                'articles' => $tag->articles,
+                'tag'      => $tag,
+            ]
+        );
     }
 
 }

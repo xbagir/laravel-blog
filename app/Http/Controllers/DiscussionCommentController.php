@@ -13,6 +13,8 @@ class DiscussionCommentController extends Controller
      * @param DiscussionService             $discussionService
      *
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     * @throws \Throwable
      */
     public function store(StoreDiscussionCommentRequest $request, DiscussionService $discussionService)
     {

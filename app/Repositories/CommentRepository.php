@@ -14,7 +14,7 @@ class CommentRepository implements CommentRepositoryContract
      *
      * @return Collection|static[]
      */
-    public function getAll() : Collection
+    public function getAll(): Collection
     {
         return Comment::all();
     }

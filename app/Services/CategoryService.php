@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class CategoryService
 {
+    /** @var CategoryRepository $categoryRepository */
     protected $categoryRepository;
 
     public function __construct(CategoryRepository $categoryRepository)
@@ -23,7 +24,7 @@ class CategoryService
      *
      * @return Category|null
      */
-    public function getById(int $id) : ?Category
+    public function getById(int $id): ?Category
     {
         return $this->categoryRepository->getById($id);
     }
@@ -45,7 +46,7 @@ class CategoryService
      *
      * @return Category|null
      */
-    public function getBySlug(string $slug) : ?Category
+    public function getBySlug(string $slug): ?Category
     {
         return $this->categoryRepository->getBySlug($slug);
     }
